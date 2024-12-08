@@ -1,22 +1,23 @@
 import sys
 import random
+from PyQt6 import uic
 
 from PyQt6.QtGui import QPainter, QColor
-from PyQt6.QtWidgets import QWidget, QApplication, QPushButton
+from PyQt6.QtWidgets import QWidget, QApplication, QPushButton, QMainWindow
 
 
-class Example(QWidget):
+class Example(QMainWindow):
     def __init__(self):
         super().__init__()
         self.initUI()
         self.btn = QPushButton(self)
-        self.btn.move(80, 50)
+        self.btn.setGeometry(30, 30, 121, 41)
         self.btn.setText('Создать окружность')
         self.btn.clicked.connect(self.paint)
+        self.resize(1000, 750)
 
     def initUI(self):
-        self.setGeometry(300, 300, 1000, 750)
-        self.setWindowTitle('Рисование')
+        uic.loadUi('UI.ui')
 
     def paintEvent(self, event):
         qp = QPainter()
